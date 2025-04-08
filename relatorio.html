@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Suporte Técnico - Conexão de Impressora</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #3498db;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2c3e50;
+        }
+        .client-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .code-block {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .btn-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .btn-pdf {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn-pdf:hover {
+            background-color: #c0392b;
+        }
+        .solution-steps {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .solution-steps ol {
+            padding-left: 20px;
+        }
+        .solution-steps li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+        }
+        .signature-line {
+            border-top: 1px solid #333;
+            display: inline-block;
+            width: 300px;
+            margin-top: 50px;
+        }
+        .tech-info {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn-container">
+        <button class="btn-pdf" id="download-pdf">Baixar como PDF</button>
+    </div>
+
+    <div class="container" id="report-content">
+        <header>
+            <h1>Relatório de Suporte Técnico</h1>
+            <h2>Conexão de Impressora</h2>
+            
+            <div class="client-info">
+                <div class="info-box">
+                    <strong>Cliente:</strong> Cassius
+                </div>
+                <div class="info-box">
+                    <strong>Data do Atendimento:</strong> 08/04/2025
+                </div>
+                <div class="info-box">
+                    <strong>Técnico Responsável:</strong> Kennedy Guimaraes
+                </div>
+                <div class="info-box">
+                    <strong>Dispositivo:</strong> Impressora Epson G7010
+                </div>
+                <div class="info-box">
+                    <strong>Roteador:</strong> Asus ROG Rapture GT-AX11000
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <h2>1. Problema Reportado</h2>
+            <p>O cliente informou que precisava configrar a impressora na rede na rede wi-fi.</p>
+        </section>
+
+        <section>
+            <h2>2. Diagnóstico e Testes Realizados</h2>
+            <p><strong>Acesso ao roteador:</strong> Impressora presente na lista de dispositivos conectados com IP atribuído.</p>
+            <p><strong>Teste de conectividade:</strong> Tentativa de ping à impressora, sem sucesso.</p>
+            <p><strong>Análise de rede:</strong> Uso de um script Bash para varrer a rede e identificar quais dispositivos estavam respondendo.</p>
+            <p>O script ajudou a confirmar que a impressora estava conectada, mas isolada e sem comunicação com outros dispositivos, sugerindo um problema relacionado à configuração da rede.</p>
+        </section>
+
+        <section>
+            <h2>3. Ajuste na Configuração de Rede</h2>
+            <p>Durante a análise, foi identificado que o recurso OFDMA do roteador poderia estar interferindo na comunicação com a impressora.</p>
+            
+            <h3>O que é OFDMA?</h3>
+            <p>O OFDMA (Orthogonal Frequency Division Multiple Access) é uma tecnologia do Wi-Fi 6 que otimiza redes congestionadas, permitindo que múltiplos dispositivos transmitam simultaneamente de forma eficiente.</p>
+            
+            <h3>Por que foi ajustado?</h3>
+            <p>Algumas impressoras não são compatíveis com Wi-Fi 6 e podem ter dificuldades para se comunicar quando o OFDMA está ativado.</p>
+            <p>O roteador não permitiu desativar o OFDMA apenas na banda de 2.4 GHz, então o ajuste foi feito em todas as bandas (2.4 GHz, 5 GHz e 6 GHz).</p>
+            
+            <h3>OFDMA foi desativado, isso impacta o desempenho?</h3>
+            <p>Não há impacto significativo para redes domésticas ou pequenas empresas, pois outras otimizações do Wi-Fi 6 continuam ativas.</p>
+            <p>Dispositivos modernos (como uma RTX para streaming ou transferência de dados) continuam funcionando normalmente sem perda perceptível de desempenho.</p>
+            <p>Se houver qualquer alteração no desempenho da rede, o OFDMA pode ser reativado e outras soluções para a impressora podem ser testadas.</p>
+        </section>
+
+        <section>
+            <h2>4. Solução Aplicada</h2>
+            <div class="solution-steps">
+                <ol>
+                    <li>Desativação do OFDMA (afetando todas as bandas, pois não havia opção para desligar apenas na 2.4 GHz).</li>
+                    <li>Após essa mudança, a impressora passou a responder corretamente e se conectar aos demais dispositivos.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Script Bash Utilizado</h2>
+            <p>Foi utilizado um script para realizar uma varredura na rede e listar todos os dispositivos ativos, confirmando que a impressora estava conectada, mas sem comunicação:</p>
+            
+            <div class="code-block">
+                <pre>#!/bin/bash
+
+echo "Iniciando varredura na rede..."
+for IP in {1..254}
+do
+    HOST="192.168.0.$IP"
+    ping -c 1 -W 1 $HOST &> /dev/null
+    if [ $? -eq 0 ]; then
+        echo "Dispositivo ativo: $HOST"
+    fi
+done
+echo "Varredura concluída."</pre>
+            </div>
+            
+            <h3>Explicação do Script:</h3>
+            <ul>
+                <li>Percorre os IPs de 192.168.0.1 a 192.168.0.254.</li>
+                <li>Faz um ping rápido em cada IP.</li>
+                <li>Exibe apenas os dispositivos que responderam, ou seja, estão ativos na rede.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>6. Resultado e Recomendações</h2>
+            <p><span class="success">✓</span> Impressora conectada e funcionando corretamente.</p>
+            <p><span class="success">✓</span> Comunicação entre dispositivos restaurada.</p>
+            <p><span class="success">✓</span> OFDMA desativado, sem impacto significativo no desempenho dos demais dispositivos.</p> 
+            
+            <ul>
+                <li><h5>(obs. Nao foi possivel uma analise mais avancada de desempenho devido ao horario.)</h5></li>
+            </ul>
+            
+            <p><span class="success">✓</span> O script Bash pode ser utilizado futuramente para identificar dispositivos ativos na rede.</p>
+
+            
+            <p>Caso perceba qualquer alteração na performance da rede, o OFDMA pode ser reativado, e outras soluções para a impressora podem ser exploradas.</p>
+        </section>
+
+        <div class="signature">
+            <div class="tech-info">Técnico Responsável</div>
+            <div class="signature-line"></div>
+            <div>Kennedy Guimaraes</div>
+        </div>
+
+        <div class="footer">
+            Relatório gerado em <span id="report-date"></span> | Suporte Técnico
+        </div>
+    </div>
+
+    <script>
+        // Adiciona a data atual
+        document.getElementById('report-date').textContent = new Date().toLocaleDateString('pt-BR');
+        
+        // Configura o botão de download PDF
+        document.getElementById('download-pdf').addEventListener('click', () => {
+            const element = document.getElementById('report-content');
+            const opt = {
+                margin: 10,
+                filename: 'Relatorio_Suporte_Impressora.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Gerar PDF
+            html2pdf().set(opt).from(element).save();
+        });
+    </script>
+</body>
+</html>
